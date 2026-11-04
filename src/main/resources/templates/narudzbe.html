@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Narudzbe</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+        th { background-color: #eee; }
+        a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+<a th:href="@{/a}">Laptopi</a>
+<a th:href="@{/b}">Dodatna oprema</a>
+<a th:href="@{/narudzbe}">Narudzbe</a>
+
+<h1>Lista narudzbi</h1>
+<p><a th:href="@{/narudzbe/nova}">+ Nova narudzba</a></p>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Kupac</th>
+        <th>Email</th>
+        <th>Laptop</th>
+        <th>Kolicina</th>
+        <th>Datum</th>
+        <th>Status</th>
+        <th>Akcija</th>
+    </tr>
+    <tr th:each="n : ${narudzbe}">
+        <td th:text="${n.id}"></td>
+        <td th:text="${n.imeKupca}"></td>
+        <td th:text="${n.email}"></td>
+        <td th:text="${n.laptop.brand} + ' ' + ${n.laptop.model}"></td>
+        <td th:text="${n.kolicina}"></td>
+        <td th:text="${n.datum}"></td>
+        <td th:text="${n.status}"></td>
+        <td><a th:href="@{/narudzbe/{id}/edit(id=${n.id})}">Izmijeni</a></td>
+    </tr>
+</table>
+</body>
+</html>

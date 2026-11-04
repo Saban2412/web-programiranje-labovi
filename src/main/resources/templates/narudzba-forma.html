@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Narudzba</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        label { display: block; margin-top: 12px; }
+        input, select { padding: 6px; width: 300px; }
+        button { margin-top: 20px; padding: 8px 16px; }
+        a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+<a th:href="@{/a}">Laptopi</a>
+<a th:href="@{/b}">Dodatna oprema</a>
+<a th:href="@{/narudzbe}">Narudzbe</a>
+
+<h1 th:text="${naslov}"></h1>
+
+<!-- akcija je "/narudzbe/nova" ili "/narudzbe/{id}/edit", zavisno od toga sta kontroler posalje -->
+<form th:action="@{${akcija}}" method="post">
+
+    <label>Ime kupca</label>
+    <input type="text" name="imeKupca" th:value="${narudzba.imeKupca}" required>
+
+    <label>Email</label>
+    <input type="email" name="email" th:value="${narudzba.email}" required>
+
+    <label>Laptop</label>
+    <select name="laptopId">
+        <option th:each="l : ${laptops}"
+                th:value="${l.id}"
+                th:text="${l.brand} + ' ' + ${l.model}"
+                th:selected="${narudzba.laptop != null and narudzba.laptop.id == l.id}">
+        </option>
+    </select>
+
+    <label>Kolicina</label>
+    <input type="number" name="kolicina" min="1"
+           th:value="${narudzba.kolicina == 0 ? 1 : narudzba.kolicina}" required>
+
+    <label>Status</label>
+    <select name="status">
+        <option th:each="s : ${statusi}"
+                th:value="${s}"
+                th:text="${s}"
+                th:selected="${s == narudzba.status}">
+        </option>
+    </select>
+
+    <br>
+    <button type="submit">Spremi</button>
+</form>
+
+<p><a th:href="@{/narudzbe}">Nazad na listu</a></p>
+</body>
+</html>
