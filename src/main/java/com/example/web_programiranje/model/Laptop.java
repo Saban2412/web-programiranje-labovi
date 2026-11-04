@@ -1,6 +1,4 @@
-package model;
-
-import model.Accessory;
+package com.example.web_programiranje.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ public class Laptop {
     private double price;
     private int ramGb;
     private int storageGb;
-    private List<Accessory> accessories; // jedan laptop ima vise opreme (1:N)
+    private List<Accessory> accessories;
 
     public Laptop(int id, String brand, String model, double price, int ramGb, int storageGb) {
         this.id = id;
