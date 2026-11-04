@@ -1,8 +1,8 @@
-package service;
+package com.example.web_programiranje.service;
 
 import com.example.web_programiranje.model.Accessory;
 import org.springframework.stereotype.Service;
-import repository.AccessoryRepository;
+import com.example.web_programiranje.repository.AccessoryRepository;
 
 import java.util.List;
 
