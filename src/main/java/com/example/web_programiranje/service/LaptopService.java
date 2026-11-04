@@ -16,7 +16,7 @@ public class LaptopService {
     public List<Laptop> findAll(){
         return laptopRepository.findAll();
     }
-    public ScopedValue<Object> findById(Long id){
-        return (ScopedValue<Object>) laptopRepository.findById(id).orElse(null);
+    public Laptop findById(Long id){
+        return (Laptop) laptopRepository.findById(id).orElse(null);
     }
 }
