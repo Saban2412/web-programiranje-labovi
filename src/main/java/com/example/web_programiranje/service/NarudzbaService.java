@@ -1,11 +1,10 @@
-package service;
+package com.example.web_programiranje.service;
 
 import com.example.web_programiranje.model.Narudzba;
 import org.springframework.stereotype.Service;
-import repository.NarudzbaRepository;
+import com.example.web_programiranje.repository.NarudzbaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NarudzbaService {
