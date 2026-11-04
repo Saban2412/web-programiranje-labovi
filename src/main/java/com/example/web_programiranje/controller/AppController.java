@@ -1,6 +1,5 @@
 package com.example.web_programiranje.controller;
 
-import com.example.web_programiranje.data.DemoData;
 import com.example.web_programiranje.model.Accessory;
 import com.example.web_programiranje.model.Laptop;
 import org.springframework.stereotype.Controller;
