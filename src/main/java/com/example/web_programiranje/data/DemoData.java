@@ -1,7 +1,7 @@
-package data;
+package com.example.web_programiranje.data;
 
-import model.Accessory;
-import model.Laptop;
+import com.example.web_programiranje.model.Accessory;
+import com.example.web_programiranje.model.Laptop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ public class DemoData {
     public static List<Laptop> laptops = new ArrayList<>();
     public static List<Accessory> accessories = new ArrayList<>();
 
-    // izvrsi se jednom, kad se klasa ucita
     static {
         Laptop l1 = new Laptop(1, "Lenovo", "ThinkPad E14", 1299.0, 16, 512);
         Laptop l2 = new Laptop(2, "HP", "Pavilion 15", 999.0, 8, 512);

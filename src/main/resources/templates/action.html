@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sastavi paket</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+    th { background-color: #eee; }
+    a { margin-right: 15px; }
+    .rezultat { background-color: #f4f4f4; padding: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+<a th:href="@{/a}">Laptopi</a>
+<a th:href="@{/b}">Dodatna oprema</a>
+
+<h1>Sastavi paket</h1>
+
+<h2 th:text="${laptop.brand} + ' ' + ${laptop.model}"></h2>
+<p>Cijena laptopa: <b th:text="${laptop.price} + ' KM'"></b></p>
+
+<form th:action="@{/a/action/{id}(id=${laptop.id})}" method="get">
+  <table>
+    <tr>
+      <th>Odaberi</th>
+      <th>Oprema</th>
+      <th>Tip</th>
+      <th>Cijena</th>
+      <th>Stanje</th>
+    </tr>
+    <tr th:each="a : ${laptop.accessories}">
+      <td>
+        <input type="checkbox" name="selected"
+               th:value="${a.id}"
+               th:checked="${selectedIds.contains(a.id)}"
+               th:disabled="${!a.inStock}">
+      </td>
+      <td th:text="${a.name}"></td>
+      <td th:text="${a.type}"></td>
+      <td th:text="${a.price} + ' KM'"></td>
+      <td th:text="${a.inStock} ? 'Na stanju' : 'Nema na stanju'"></td>
+    </tr>
+  </table>
+  <br>
+  <button type="submit">Izračunaj cijenu</button>
+</form>
+
+<div class="rezultat">
+  <p>Cijena opreme: <span th:text="${#numbers.formatDecimal(accessoriesTotal, 1, 2)} + ' KM'"></span></p>
+
+  <p th:if="${discount}">
+    Popust 10% (odabrano 2 ili više artikala):
+    -<span th:text="${#numbers.formatDecimal(discountAmount, 1, 2)} + ' KM'"></span>
+  </p>
+
+  <h3>Ukupno: <span th:text="${#numbers.formatDecimal(total, 1, 2)} + ' KM'"></span></h3>
+</div>
+
+<p><a th:href="@{/a}">Nazad na laptope</a></p>
+</body>
+</html>

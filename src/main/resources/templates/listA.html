@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptopi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+        th { background-color: #eee; }
+        a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+<a th:href="@{/a}">Laptopi</a>
+<a th:href="@{/b}">Dodatna oprema</a>
+
+<h1>Lista laptopa</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Brend</th>
+        <th>Model</th>
+        <th>RAM</th>
+        <th>SSD</th>
+        <th>Cijena</th>
+        <th>Oprema</th>
+        <th>Akcija</th>
+    </tr>
+    <tr th:each="l : ${laptops}">
+        <td th:text="${l.id}"></td>
+        <td th:text="${l.brand}"></td>
+        <td th:text="${l.model}"></td>
+        <td th:text="${l.ramGb} + ' GB'"></td>
+        <td th:text="${l.storageGb} + ' GB'"></td>
+        <td th:text="${l.price} + ' KM'"></td>
+        <td>
+            <div th:each="a : ${l.accessories}" th:text="${a.name}"></div>
+        </td>
+        <td>
+            <a th:href="@{/a/action/{id}(id=${l.id})}">Sastavi paket</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

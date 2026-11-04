@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodatna oprema</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+    th { background-color: #eee; }
+    a { margin-right: 15px; }
+  </style>
+</head>
+<body>
+<a th:href="@{/a}">Laptopi</a>
+<a th:href="@{/b}">Dodatna oprema</a>
+
+<h1>Lista dodatne opreme</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Naziv</th>
+    <th>Tip</th>
+    <th>Cijena</th>
+    <th>Na stanju</th>
+    <th>Laptop</th>
+  </tr>
+  <tr th:each="a : ${accessories}">
+    <td th:text="${a.id}"></td>
+    <td th:text="${a.name}"></td>
+    <td th:text="${a.type}"></td>
+    <td th:text="${a.price} + ' KM'"></td>
+    <td th:text="${a.inStock} ? 'Da' : 'Ne'"></td>
+    <td th:text="${a.laptop.brand} + ' ' + ${a.laptop.model}"></td>
+  </tr>
+</table>
+</body>
+</html>

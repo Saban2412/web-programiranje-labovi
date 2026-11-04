@@ -1,4 +1,4 @@
-package model;
+package com.example.web_programiranje.model;
 
 public class Accessory {
     private int id;
@@ -6,7 +6,7 @@ public class Accessory {
     private String type;
     private double price;
     private boolean inStock;
-    private Laptop laptop; // oprema pripada jednom laptopu
+    private Laptop laptop;
 
     public Accessory(int id, String name, String type, double price, boolean inStock, Laptop laptop) {
         this.id = id;
