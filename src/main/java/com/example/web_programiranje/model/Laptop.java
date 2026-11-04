@@ -22,6 +22,8 @@ public class Laptop {
     @JsonIgnore
     private List<Accessory> accessories = new ArrayList<>();
 
+    public Laptop(){}
+
     public Laptop(String brand, String model, double price, int ramGb, int storageGb) {
         this.brand = brand;
         this.model = model;

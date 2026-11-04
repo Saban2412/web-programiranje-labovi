@@ -1,7 +1,8 @@
 package com.example.web_programiranje.controller;
 
-import com.example.web_programiranje.model.Accessory;
-import com.example.web_programiranje.model.Laptop;
+import com.example.web_programiranje.model.*;
+import com.example.web_programiranje.service.AccessoryService;
+import com.example.web_programiranje.service.LaptopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,14 @@ import java.util.List;
 @Controller
 public class AppController {
 
+    private final LaptopService laptopService;
+    private final AccessoryService accessoryService;
+
+    public AppController(LaptopService laptopService, AccessoryService accessoryService) {
+        this.laptopService = laptopService;
+        this.accessoryService = accessoryService;
+    }
+
     @GetMapping("/")
     public String home() {
         return "redirect:/a";
@@ -21,27 +30,22 @@ public class AppController {
 
     @GetMapping("/a")
     public String listA(Model model) {
-        model.addAttribute("laptops", DemoData.laptops);
+        model.addAttribute("laptops", laptopService.findAll());
         return "listA";
     }
 
     @GetMapping("/b")
     public String listB(Model model) {
-        model.addAttribute("accessories", DemoData.accessories);
+        model.addAttribute("accessories", accessoryService.findAll());
         return "listB";
     }
 
     @GetMapping("/a/action/{id}")
-    public String action(@PathVariable int id,
-                         @RequestParam(required = false) List<Integer> selected,
+    public String action(@PathVariable Long id,
+                         @RequestParam(required = false) List<Long> selected,
                          Model model) {
 
-        Laptop laptop = null;
-        for (Laptop l : DemoData.laptops) {
-            if (l.getId() == id) {
-                laptop = l;
-            }
-        }
+        Laptop laptop = laptopService.findById(id);
         if (laptop == null) {
             return "redirect:/a";
         }
