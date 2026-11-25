@@ -4,8 +4,8 @@ Web aplikacija za prikaz laptopa, dodatne opreme i narudžbi. Rađeno u sklopu p
 
 ## Autori
 
-- [Emir Šabanović]
-- [Delila Osmančević]
+- Emir Šabanović
+- Delila Osmančević
 
 ---
 
@@ -42,8 +42,8 @@ U kodu: `@OneToMany(mappedBy = "laptop")` u klasi `Laptop` i `@ManyToOne` + `@Jo
 
 ## Podjela posla (Lab 1)
 
-- **[Emir Šabanović]:** [UPISATI: šta je radio/la, npr. Model A, ruta i view liste A]
-- **[Delila Osmančević]:** [UPISATI: šta je radio/la, npr. Model B, ruta i view liste B]
+- **Emir Šabanović:** [UPISATI: šta je radio/la, npr. Model A, ruta i view liste A]
+- **Delila Osmančević:** [UPISATI: šta je radio/la, npr. Model B, ruta i view liste B]
 - **Zajedno:** akcija u kontroleru i stranica akcije
 
 ---
@@ -98,8 +98,8 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 ## Podjela posla (Lab 2)
 
-- **[Emir Šabanović]:** [UPISATI: šta je radio/la]
-- **[Delila Osmančević]:** [UPISATI: šta je radio/la]
+- **Emir Šabanović:** [UPISATI: šta je radio/la]
+- **Delila Osmančević:** [UPISATI: šta je radio/la]
 
 ---
 
